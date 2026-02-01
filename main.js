@@ -1,4 +1,30 @@
 
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+const applyTheme = (theme) => {
+    if (theme === 'light') {
+        body.dataset.theme = 'light';
+        themeToggle.textContent = '🌑';
+    } else {
+        delete body.dataset.theme;
+        themeToggle.textContent = '🌓';
+    }
+};
+
+themeToggle.addEventListener('click', () => {
+    let newTheme = body.dataset.theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
+});
+
+// Apply saved theme on load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    applyTheme(savedTheme);
+}
+
+
 document.getElementById('generate-btn').addEventListener('click', () => {
     const numbersContainer = document.getElementById('numbers');
     numbersContainer.innerHTML = ''; // Clear previous numbers
