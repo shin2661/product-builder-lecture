@@ -35,31 +35,52 @@ const setLanguage = (lang) => {
 
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        element.textContent = translations[key];
+        if (translations[key]) {
+            // Handle special cases like title
+            if (element.tagName === 'TITLE') {
+                document.title = translations[key];
+            } else {
+                element.textContent = translations[key];
+            }
+        }
     });
 
-    // Reset menu recommendation
+    // Reset menu recommendation placeholder on language change if on the main page
     const menuItemSpan = document.getElementById('menu-item');
-    menuItemSpan.textContent = translations.menuPlaceholder;
-    menuItemSpan.classList.add('menu-item-placeholder');
+    if (menuItemSpan) {
+        menuItemSpan.textContent = translations.menuPlaceholder;
+        menuItemSpan.classList.add('menu-item-placeholder');
+    }
 };
 
 langKoBtn.addEventListener('click', () => setLanguage('ko'));
 langEnBtn.addEventListener('click', () => setLanguage('en'));
 
 
-// --- RECOMMENDATION ---
+// --- RECOMMENDATION (Only on Index Page) ---
 const recommendBtn = document.getElementById('recommend-btn');
-const menuItemSpan = document.getElementById('menu-item');
+if (recommendBtn) {
+    const menuItemSpan = document.getElementById('menu-item');
+    recommendBtn.addEventListener('click', () => {
+        if (currentDinnerMenus.length === 0) return;
 
-recommendBtn.addEventListener('click', () => {
-    if (currentDinnerMenus.length === 0) return;
+        const randomIndex = Math.floor(Math.random() * currentDinnerMenus.length);
+        const selectedMenu = currentDinnerMenus[randomIndex];
+        menuItemSpan.textContent = selectedMenu;
+        menuItemSpan.classList.remove('menu-item-placeholder');
+    });
+}
 
-    const randomIndex = Math.floor(Math.random() * currentDinnerMenus.length);
-    const selectedMenu = currentDinnerMenus[randomIndex];
-    menuItemSpan.textContent = selectedMenu;
-    menuItemSpan.classList.remove('menu-item-placeholder');
-});
+// --- NAVIGATION ---
+const setActiveNav = () => {
+    const navLinks = document.querySelectorAll('.navbar a');
+    const currentPath = window.location.pathname.split('/').pop();
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+};
 
 
 // --- INITIAL LOAD ---
@@ -69,6 +90,8 @@ const init = () => {
 
     const savedLang = localStorage.getItem('language') || 'ko';
     setLanguage(savedLang);
+    
+    setActiveNav();
 };
 
 init();

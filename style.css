@@ -28,8 +28,9 @@ body {
     color: var(--text-color);
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    padding-top: 150px;
+    min-height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -41,6 +42,32 @@ body {
     display: flex;
     gap: 15px;
     align-items: center;
+    z-index: 100;
+}
+
+.navbar {
+    width: 100%;
+    background-color: var(--container-bg-color);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 99;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #007bff;
 }
 
 .lang-switcher button {
