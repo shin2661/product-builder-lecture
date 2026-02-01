@@ -4,18 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>저녁 메뉴 추천</title>
+    <title data-i18n="title">저녁 메뉴 추천</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle">🌓</button>
-    <div class="container">
-        <h1>저녁 메뉴 추천</h1>
-        <div id="menu-display" class="menu-display-container">
-            <span id="menu-item" class="menu-item-placeholder">?</span>
+    <div class="top-bar">
+        <div class="lang-switcher">
+            <button id="lang-ko">🇰🇷</button>
+            <button id="lang-en">🇺🇸</button>
         </div>
-        <button id="recommend-btn">메뉴 추천</button>
+        <button id="theme-toggle">🌓</button>
     </div>
+    <div class="container">
+        <h1 data-i18n="heading">저녁 메뉴 추천</h1>
+        <div id="menu-display" class="menu-display-container">
+            <span id="menu-item" class="menu-item-placeholder" data-i18n="menuPlaceholder">?</span>
+        </div>
+        <button id="recommend-btn" data-i18n="recommendButton">메뉴 추천</button>
+    </div>
+    <script src="languages.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
