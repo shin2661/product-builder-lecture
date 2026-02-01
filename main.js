@@ -24,32 +24,17 @@ if (savedTheme) {
     applyTheme(savedTheme);
 }
 
+const dinnerMenus = [
+    "치킨", "피자", "삼겹살", "초밥", "파스타", "족발", "보쌈", "떡볶이", "김치찌개", "된장찌개",
+    "부대찌개", "곱창", "막창", "라멘", "쌀국수", "햄버거", "타코", "카레", "돈까스", "마라탕"
+];
 
-document.getElementById('generate-btn').addEventListener('click', () => {
-    const numbersContainer = document.getElementById('numbers');
-    numbersContainer.innerHTML = ''; // Clear previous numbers
+const recommendBtn = document.getElementById('recommend-btn');
+const menuItemSpan = document.getElementById('menu-item');
 
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
-    }
-
-    const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
-
-    sortedNumbers.forEach(number => {
-        const numberElement = document.createElement('span');
-        numberElement.className = 'number';
-        numberElement.textContent = number;
-        numberElement.style.backgroundColor = getRandomColor();
-        numbersContainer.appendChild(numberElement);
-    });
+recommendBtn.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+    const selectedMenu = dinnerMenus[randomIndex];
+    menuItemSpan.textContent = selectedMenu;
+    menuItemSpan.classList.remove('menu-item-placeholder');
 });
-
-function getRandomColor() {
-    const colors = [
-        '#ff6b6b', '#f06595', '#cc5de8', '#845ef7', '#5c7cfa', '#339af0',
-        '#22b8cf', '#20c997', '#51cf66', '#94d82d', '#fcc419', '#ff922b'
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
