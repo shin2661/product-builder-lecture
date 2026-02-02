@@ -17,9 +17,18 @@ const languages = {
         privacyText2: "저희는 사용자의 브라우저에 있는 localStorage를 사용하여 선호하는 테마(다크/라이트 모드)와 언어 설정을 저장합니다. 이 정보는 사용자의 컴퓨터에만 저장되며 저희에게 전송되지 않습니다. 그 외 다른 개인 정보는 수집하지 않습니다.",
         privacySubheading2: "제3자 서비스",
         privacyText3: "저희는 Google AdSense를 사용하여 광고를 표시합니다. Google은 쿠키를 사용하여 사용자의 이 웹사이트 또는 다른 웹사이트 방문 기록에 기반한 광고를 게재할 수 있습니다. Google의 광고 설정에서 맞춤 광고를 선택 해제할 수 있습니다.",
+        menuListHeading: "추천 가능한 메뉴",
         dinnerMenus: [
-            "치킨", "피자", "삼겹살", "초밥", "파스타", "족발", "보쌈", "떡볶이", "김치찌개", "된장찌개",
-            "부대찌개", "곱창", "막창", "라멘", "쌀국수", "햄버거", "타코", "카레", "돈까스", "마라탕"
+            "피자", "햄버거", "타코", "초밥", "파스타", "라멘", "스테이크", "프라이드 치킨", "인도 커리", "쌀국수",
+            "팟타이", "부리또", "피쉬 앤 칩스", "파에야", "비리야니", "굴라쉬", "셰퍼드 파이", "라자냐", "김치찌개", "비빔밥",
+            "불고기", "삼겹살", "잠발라야", "칠리 콘 카르네", "파히타", "무사카", "기로스", "팔라펠 랩", "샤와르마", "베이징덕",
+            "딤섬", "훠궈", "스프링롤", "똠얌꿍", "그린 커리", "마사만 커리", "반미", "세비체", "로모 살타도", "아레파",
+            "페이조아다", "슈하스코", "아사도", "비너 슈니첼", "사우어브라텐", "브라트부르스트", "피에로기", "보르시", "펠메니", "블리니와 캐비어",
+            "타진", "쿠스쿠스", "보보티", "졸로프 라이스", "버니 차우", "나시고랭", "사테", "렌당", "아도보", "시니강",
+            "하이난 치킨 라이스", "락사", "피쉬 헤드 커리", "케밥", "되네르 케밥", "푸틴", "랍스터 롤", "바베큐 립", "맥앤치즈", "클램 차우더",
+            "검보", "탄두리 치킨", "버터 치킨", "사모사", "난", "크로크 무슈", "코코뱅", "부야베스", "라타투이", "까르보나라",
+            "리조또", "아란치니", "돈까스", "우동", "덴푸라", "오코노미야키", "마파두부", "쿵파오 치킨", "탕수육", "완탕면",
+            "떡볶이", "족발", "보쌈", "곱창", "마라탕", "퀘사디아", "엔칠라다", "포솔레", "타말레", "스웨덴 미트볼"
         ]
     },
     en: {
@@ -40,9 +49,18 @@ const languages = {
         privacyText2: "We use localStorage in your browser to save your preferred theme (dark/light mode) and language settings. This information is stored only on your computer and is not transmitted to us. We do not collect any other personal information.",
         privacySubheading2: "Third-Party Services",
         privacyText3: "We use Google AdSense to display ads. Google may use cookies to serve ads based on a user's prior visits to this website or other websites. You can opt out of personalized advertising by visiting Google's Ads Settings.",
+        menuListHeading: "Available Menus",
         dinnerMenus: [
-            "Chicken", "Pizza", "Pork Belly", "Sushi", "Pasta", "Jokbal", "Bossam", "Tteokbokki", "Kimchi Jjigae", "Doenjang Jjigae",
-            "Budae Jjigae", "Gopchang", "Makchang", "Ramen", "Pho", "Hamburger", "Taco", "Curry", "Donkkaseu", "Malatang"
+            "Pizza", "Hamburger", "Tacos", "Sushi", "Pasta", "Ramen", "Steak", "Fried Chicken", "Indian Curry", "Pho",
+            "Pad Thai", "Burrito", "Fish and Chips", "Paella", "Biryani", "Goulash", "Shepherd's Pie", "Lasagna", "Kimchi Jjigae", "Bibimbap",
+            "Bulgogi", "Samgyeopsal (Pork Belly)", "Jambalaya", "Chili con Carne", "Fajitas", "Moussaka", "Gyro", "Falafel Wrap", "Shawarma", "Peking Duck",
+            "Dim Sum", "Hot Pot", "Spring Rolls", "Tom Yum Soup", "Green Curry", "Massaman Curry", "Banh Mi", "Ceviche", "Lomo Saltado", "Arepas",
+            "Feijoada", "Churrasco", "Asado", "Wiener Schnitzel", "Sauerbraten", "Bratwurst", "Pierogi", "Borscht", "Pelmeni", "Blini with Caviar",
+            "Tagine", "Couscous", "Bobotie", "Jollof Rice", "Bunny Chow", "Nasi Goreng", "Satay", "Rendang", "Adobo", "Sinigang",
+            "Hainanese Chicken Rice", "Laksa", "Fish Head Curry", "Kebab", "Doner Kebab", "Poutine", "Lobster Roll", "BBQ Ribs", "Macaroni and Cheese", "Clam Chowder",
+            "Gumbo", "Tandoori Chicken", "Butter Chicken", "Samosa", "Naan", "Croque Monsieur", "Coq au Vin", "Bouillabaisse", "Ratatouille", "Carbonara",
+            "Risotto", "Arancini", "Tonkatsu", "Udon", "Tempura", "Okonomiyaki", "Mapo Tofu", "Kung Pao Chicken", "Sweet and Sour Pork", "Wonton Soup",
+            "Tteokbokki", "Jokbal (Pig's Trotters)", "Bossam (Boiled Pork Wraps)", "Gopchang (Grilled Intestines)", "Malatang", "Quesadilla", "Enchiladas", "Pozole", "Tamales", "Swedish Meatballs"
         ]
     }
 };

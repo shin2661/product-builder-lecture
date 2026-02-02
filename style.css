@@ -8,6 +8,7 @@
     --menu-item-box-shadow-1: #121212;
     --menu-item-box-shadow-2: #484848;
     --placeholder-color: #555;
+    --menu-list-bg-color: #3a3a3a;
 }
 
 [data-theme="light"] {
@@ -19,6 +20,7 @@
     --menu-item-box-shadow-1: #d1d9e6;
     --menu-item-box-shadow-2: #ffffff;
     --placeholder-color: #bbb;
+    --menu-list-bg-color: #f8f9fa;
 }
 
 
@@ -145,4 +147,27 @@ h1 {
     color: var(--text-color);
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.menu-list-container {
+    margin-top: 40px;
+}
+
+.menu-list-container h2 {
+    margin-bottom: 20px;
+}
+
+#menu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#menu-list li {
+    background-color: var(--menu-list-bg-color);
+    padding: 10px 20px;
+    border-radius: 8px;
 }
